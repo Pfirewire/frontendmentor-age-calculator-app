@@ -41,7 +41,7 @@ body {
     background-color: var(--white);
     width: 850px;
     border-radius: 25px 25px 200px 25px;
-    padding: 6rem 4rem;
+    padding: 4rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -60,10 +60,10 @@ body {
 
 input {
     all: unset;
-    font-size: 24px;
-    width: 5rem;
+    font-size: 27px;
+    width: 6rem;
     border: 1px solid var(--light-grey);
-    padding: 1rem 2rem;
+    padding: .75rem 1.5rem;
     border-radius: 5px;
 }
 
@@ -80,6 +80,7 @@ label {
 
 .card-divider {
     position: relative;
+    margin: 2rem 0;
 }
 
 .arrow-wrapper {
