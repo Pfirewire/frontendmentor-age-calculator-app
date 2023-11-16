@@ -13,32 +13,44 @@
 
     // Functions
 
-    const dateDiffInDays = (date1, date2) => {
-        const _MS_PER_DAY = 1000 * 60 * 60 * 24;
-
-        const utc1 = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate());
-        const utc2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate());
-
-        return Math.floor((utc2 - utc1) / _MS_PER_DAY);
-    };
-
-    const convertDaysToYearMonthDay = days => {
-        const amountOfTime = {
+    const dateDiff = (date1, date2) => {
+        const diff = {
             years: 0,
             months: 0,
             days: 0
         };
-        if(days > 365) {
-            amountOfTime.years = Math.floor(days / 365);
-            days = days - (amountOfTime.years * 365);
+        const daysInMonth = [
+            31,
+            (date1.getFullYear() % 4 === 0 && date1.getFullYear() % 100 !== 0) || date1.getFullYear() % 400 === 0 ? 29 : 28,
+            31,
+            30,
+            31,
+            30,
+            31,
+            31,
+            30,
+            31,
+            30,
+            31
+        ];
+        diff.years = date2.getFullYear() - date1.getFullYear();
+        diff.months = date2.getMonth() - date1.getMonth();
+        if(diff.months < 0) {
+            diff.years--;
+            diff.months += 12;
         }
-        if(days > 31) {
-            amountOfTime.months = Math.floor(days / 31);
-            days = days - (amountOfTime.months * 31);
+        diff.days = date2.getDate() - date1.getDate();
+        if(diff.days < 0) {
+            if(diff.months > 0) {
+                diff.months--;
+            } else {
+                diff.years--;
+                diff.months = 11;
+            }
+            diff.days += daysInMonth[date1.getMonth()];
         }
-        amountOfTime.days = days;
-        return amountOfTime;
-    };
+        return diff;
+    }
 
     const clearInputs = () => {
         dayInput.value = "";
@@ -55,12 +67,10 @@
     const handleSubmitClick = () => {
         console.log("Submit button clicked");
         const userDate = new Date(yearInput.value, monthInput.value - 1, dayInput.value);
-        const dateDiff = dateDiffInDays(userDate, new Date());
-        console.log(dateDiff);
-        const amountOfTime = convertDaysToYearMonthDay(dateDiff);
+        const amountOfTime = dateDiff(userDate, new Date());
         console.log(amountOfTime);
-        clearInputs();
         setDateValues(amountOfTime);
+        clearInputs();
     };
 
     // Events
