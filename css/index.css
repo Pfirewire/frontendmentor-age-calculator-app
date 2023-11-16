@@ -93,6 +93,11 @@ label {
     align-items: center;
     right: 0;
     top: -42px;
+    transition: transform 120ms ease-in-out;
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+    }
 }
 
 hr {
