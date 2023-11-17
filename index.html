@@ -21,16 +21,19 @@
         <div class="card">
             <div class="card-header">
                 <div class="input-section">
-                    <label for="day-input">DAY</label>
-                    <input type="text" id="day-input" name="day-input" class="input">
+                    <label for="day-input" id="day-label">DAY</label>
+                    <input type="text" id="day-input" name="day-input" class="input" placeholder="DD">
+                    <div class="invalid" id="invalid-day" style="display: none;"></div>
                 </div>
                 <div class="input-section">
-                    <label for="month-input">MONTH</label>
-                    <input type="text" id="month-input" name="month-input" class="input">
+                    <label for="month-input" id="month-label">MONTH</label>
+                    <input type="text" id="month-input" name="month-input" class="input" placeholder="MM">
+                    <div class="invalid" id="invalid-month" style="display: none;"></div>
                 </div>
                 <div class="input-section">
-                    <label for="year-input">YEAR</label>
-                    <input type="text" id="year-input" name="year-input" class="input">
+                    <label for="year-input" id="year-label">YEAR</label>
+                    <input type="text" id="year-input" name="year-input" class="input" placeholder="YYYY">
+                    <div class="invalid" id="invalid-year" style="display: none;"></div>
                 </div>
             </div>
             <div class="card-divider">

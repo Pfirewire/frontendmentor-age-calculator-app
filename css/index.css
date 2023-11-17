@@ -76,6 +76,13 @@ label {
 .input-section {
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
+}
+
+.invalid {
+    color: var(--light-red);
+    font-style: italic;
+    font-size: 14px;
 }
 
 .card-divider {
